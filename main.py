@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
-service = Service(executable_path='./chromedriver.exe')
+
 
 options = webdriver.ChromeOptions()
 # options.add_experimental_option('excludeSwitches', ['enable-logging'])
@@ -19,6 +19,7 @@ if(int(answer) == 1):
     howmany = input("\033[1;33;40m How many times you want to upload this video ---> ")
 
     for i in range(int(howmany)):
+        service = Service(executable_path='./chromedriver.exe')
         bot = webdriver.Chrome(service=service, options=options)
 
         bot.get("https://studio.youtube.com")
@@ -42,6 +43,7 @@ if(int(answer) == 1):
         done_button = bot.find_element(By.XPATH, '//*[@id="done-button"]')
         done_button.click()
         time.sleep(5)
+        service.stop()
         bot.quit()
 
 elif(int(answer) == 2):
@@ -56,6 +58,7 @@ elif(int(answer) == 2):
     time.sleep(6)
 
     for i in range(count):
+        service = Service(executable_path='./chromedriver.exe')
         bot = webdriver.Chrome(service=service, options=options)
 
         bot.get("https://studio.youtube.com")
@@ -80,6 +83,7 @@ elif(int(answer) == 2):
         done_button = bot.find_element(By.XPATH, '//*[@id="done-button"]')
         done_button.click()
         time.sleep(5)
+        service.stop()
         bot.quit()
 
 
